@@ -16,7 +16,7 @@ public class chord {
 		double pi = 3.1415;
 		double alpha = l/d;
 		
-		double result = Math.asin(alpha)*pi*d/180;
+		double result = Math.asin(alpha)*d;
 		System.out.println("длина дуги составляет: " + result);
 	}
 
