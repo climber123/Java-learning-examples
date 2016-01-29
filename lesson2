@@ -1,0 +1,64 @@
+package lesson2;
+
+import java.util.Scanner;
+
+public class lesson2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	/*	System.out.println("give a digit");
+		Scanner n = new Scanner(System.in);
+		double x=n.nextDouble();
+		if (x>0) System.out.println(x);
+		else System.out.println((int)(-1*x)); */
+		
+		/*Scanner n = new Scanner(System.in);
+		System.out.println("give a coordinates: x y");
+		double x=n.nextDouble();
+		double y=n.nextDouble();
+		if ((x>0)&&(y>0)) System.out.println("1 square");
+		if ((x<0)&&(y>0)) System.out.println("2 square");
+		if ((x<0)&&(y<0)) System.out.println("3 square");
+		if ((x>0)&&(y<0)) System.out.println("4 square");
+		if  (x==0) System.out.println("at the y axis");
+		if  (y==0) System.out.println("at the x axis");
+		if (x==0&&y==0) System.out.println("at the center");
+		
+	*/
+		
+	/*	System.out.println("give lenghs of sides: x y z");
+		double x=n.nextDouble();
+		double y=n.nextDouble();
+		double z=n.nextDouble();
+		if (((x+y>z) && (x+z>y) && (y+z>x)) && (x!=0||y!=0||z!=0) ) System.out.println("yes");
+		else System.out.println("no");
+		*/
+		
+		//double y=n.nextDouble();
+		/*if (x>0)
+			if (y>=x*x && y<=Math.exp(-x)) System.out.println("yes");
+			else System.out.println("no");
+		else
+			if (y>=x*x && y<=Math.exp(x)) System.out.println("yes");
+			else System.out.println("no");
+			*/
+		Scanner nn = new Scanner(System.in);
+		System.out.println("give the number");
+		double x=nn.nextDouble();
+		
+		double y = x % 10;
+		double z = x % 100;
+		if (z<20 && z>10) System.out.print("лет");
+		else
+		if (y==0 || y==5 || y==6 || y==7 || y==8 || y==9) System.out.print("лет");
+		else 
+			if (y==2||y==3||y==4) System.out.print("года");
+	
+			
+		else System.out.print("год");
+		
+		
+		
+	}
+
+}
