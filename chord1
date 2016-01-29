@@ -1,0 +1,23 @@
+package exercise1;
+
+import java.math.MathContext;
+import java.util.Scanner;
+import java.lang.Math;
+public class chord {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("рассчет длины дуги по длине хорды");
+		Scanner scanner1=new Scanner(System.in);
+		System.out.println("введите диаметр окружности");
+		double d = scanner1.nextDouble();
+		System.out.println("введите длину хорды");
+		double l = scanner1.nextDouble();
+		double pi = 3.1415;
+		double alpha = l/d;
+		
+		double result = Math.asin(alpha)*pi*d/180;
+		System.out.println("длина дуги составляет: " + result);
+	}
+
+}
