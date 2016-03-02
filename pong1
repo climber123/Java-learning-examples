@@ -1,0 +1,28 @@
+package pinpong;
+
+import java.awt.Color;
+
+import javax.swing.JFrame;
+
+public class mainwindow {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+JFrame MyWindow = new JFrame () ;
+int windowwidth = 200;
+int windowheights = 250;
+
+MyWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+MyWindow.setBounds(100,100,windowwidth,windowheights);
+MyWindow.setResizable(true);
+
+panel myPanel = new panel(windowwidth, windowheights);
+MyWindow.add(myPanel);
+MyWindow.setBackground(Color.green);
+
+
+MyWindow.setVisible(true);
+
+	}
+
+}
