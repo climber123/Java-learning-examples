@@ -1,0 +1,131 @@
+package window;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+public class window2 extends JPanel implements ActionListener, MouseListener, MouseMotionListener, KeyListener{
+
+	//JPanel Window2 = new JPanel();
+	//JFrame 
+	Timer tm = new Timer (200, this);
+	
+	Color ourcolor = new Color (0, 0, 0);
+	
+	public void paintComponent(Graphics g){
+		
+		g.setColor(Color.white);
+		g.fillRect(10, 15, 100, 30);
+		g.setColor(Color.blue);
+		g.fillRect(10, 45, 100, 30);
+		g.setColor(Color.red);
+		g.fillRect(10, 75, 100, 30);
+		g.setColor(ourcolor);
+		g.fillRect(250, 50, 50, 50);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		int r = (int) (Math.random()*255);
+		int g = (int) (Math.random()*255);
+		int b = (int) (Math.random()*255);
+		ourcolor = new Color(r, g, b);
+		repaint();
+	}
+	public window2 ()
+	{
+		//tm.start();
+		//mouseClicked(e);
+		this.addMouseListener(this);
+		this.addMouseMotionListener(this);
+		this.addKeyListener(this);
+		setFocusable(true);
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		int r = (int) (Math.random()*255);
+		int g = (int) (Math.random()*255);
+		int b = (int) (Math.random()*255);
+		ourcolor = new Color(r, g, b);
+		repaint();
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		int r = (int) (Math.random()*255);
+		int g = (int) (Math.random()*255);
+		int b = (int) (Math.random()*255);
+		ourcolor = new Color(r, g, b);
+		repaint();
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getKeyCode() == KeyEvent.VK_SPACE)
+		{
+			tm.start();
+		}
+		if (e.getKeyCode() == KeyEvent.VK_C)
+		{
+			tm.stop();
+		}
+		
+			
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}
