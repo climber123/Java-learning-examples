@@ -1,0 +1,33 @@
+package window;
+
+import java.awt.Color;
+
+import javax.swing.JFrame;
+
+public class window1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+final int f = 100;
+
+JFrame Window1 = new JFrame();
+
+//это все, что нужно для начала работы с окном
+Window1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+Window1.setBounds(100,100,700,300);
+Window1.setResizable(false);
+
+//создать класс, который внутри JPANEL 
+window2 mp = new window2();
+Window1.add(mp);
+Window1.setBackground(Color.cyan);
+
+
+//
+Window1.setVisible(true);
+
+
+
+	}
+
+}
