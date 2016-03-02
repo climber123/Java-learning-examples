@@ -1,0 +1,35 @@
+package lesson8;
+
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
+public class noidea {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner scan = new Scanner(System.in);
+		String word = scan.nextLine();
+		//String word = "asdasd (dfd) ggff";
+		
+		String answer = "";
+		String answer2 = "";
+		//String word = scan.next();
+	/*	StringBuffer sb = new StringBuffer(word);
+		//StringBuffer sb = new StringBuffer(scan.next());
+		String s2=sb.reverse().toString();
+		if ( word.equalsIgnoreCase(sb.toString())  ) 
+	
+			{System.out.println("yes");}
+	
+		else {System.out.println("no");}
+		*/
+		StringTokenizer s2 = new StringTokenizer(word, "()");
+		answer = s2.nextToken();
+		s2.nextToken();
+		//answer2 = s2.nextToken().toString();
+		answer = answer + " " + s2.nextToken();
+		System.out.println(answer);
+	}
+
+}
