@@ -1,0 +1,101 @@
+package pinpong;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+public class panel extends JPanel implements ActionListener, KeyListener {
+
+	int incrementx = 1;
+	int incrementy = 1;
+	int xpos = 50;
+	int ypos = 50;
+	int curww = 0;
+	int curwh = 0;
+	
+	boolean istimeron = false;
+	
+	Timer OurTimer = new Timer(1 , this);
+	
+	public panel (int ww,int wh)
+	{
+		curww = ww;
+		curwh = wh;
+		this.addKeyListener(this);
+		this.setFocusable(true);
+		
+	}
+	
+	
+	public void paintComponent (Graphics g)
+	{
+		//g.setColor(Color.green);
+		//g.fillOval( xpos-1, ypos-1, 20, 20);
+		
+		super.paintComponent(g);
+		g.setColor(Color.black);
+		g.fillOval( xpos, ypos, 20, 20);
+	
+	
+	}
+	
+	
+	
+	
+	@Override
+	public void keyPressed(KeyEvent anykey) {
+		// TODO Auto-generated method stub
+		if (anykey.getKeyCode()==KeyEvent.VK_SPACE)
+		{
+		if (istimeron == true) 
+		{	
+			OurTimer.stop();
+			istimeron = false;
+			System.out.println("stop");
+		}
+		else
+		{
+			OurTimer.start();
+			istimeron = true;
+			System.out.println("start");
+		}
+		}
+		//repaint ();
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if (xpos == curww - 20) incrementx = -1;
+		if (xpos == 21) incrementx = 1;
+		
+		if (ypos == curwh - 20) incrementy = -1;
+		if (ypos == 21) incrementy = 1;
+		
+		
+		xpos = xpos + incrementx;
+		ypos = ypos + incrementy;
+		
+		repaint ();
+	}
+
+}
