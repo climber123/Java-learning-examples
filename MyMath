@@ -1,0 +1,55 @@
+import java.util.Random;
+
+public class MyMath {
+	//public final int MASSDEEP = 1000;
+	//public final int RANDOMDEEP = 1000;
+	int array_deep;
+	int random_deep;
+	
+	
+	
+	public MyMath (int x, int y) 
+	{
+	array_deep = x;
+	random_deep = y;
+	}
+
+	public int[] getMathArray ()
+	{
+		int [] random_array = new int [array_deep];
+		for (int i = 0; i < array_deep; i++ )
+			{
+				Random random_object = new Random ();
+				int current_random_number = random_object.nextInt(random_deep);
+				random_array [i] =  current_random_number;
+			}
+		return random_array; 
+	}
+
+	public int [] getFragmentation ()
+	{
+		int [] frag = getMathArray();
+		int k = frag.length;
+		int start = frag [0];
+		int z = 0;
+		int f = 0;
+		for (int i=0; i <= k; i++)
+			{
+			for ( int j=f+1  ; j <= k ; j++)
+			{
+			if (frag[j]>frag [i])  
+			{
+				z = frag [j];
+				frag [j] = frag [i];
+				frag [i] = z;
+				
+			}
+			f++;
+			}
+		
+		return frag;
+	}
+	
+	
+	
+}	
