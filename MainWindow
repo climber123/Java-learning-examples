@@ -1,0 +1,49 @@
+import java.awt.Color;
+
+import javax.swing.JFrame;
+
+
+public class MainWindow {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		final int MASSDEEP = 1000;
+		final int RANDOMDEEP = 1000;
+		final int COUNTLINES = 10;
+		
+JFrame ChartWindow = new JFrame();
+int windowwidth = 600;
+int windowheight = 400;
+int positionwidth = 300;
+int positionheight = 200;
+int [] full_array = new int [MASSDEEP];
+int [] draw_array = new int [MASSDEEP];
+int [] lines = new int [COUNTLINES+1]; //!! Важно, что тут 11 строк с 0 по 10ю
+int quantity = Math.round( MASSDEEP/COUNTLINES);
+
+ChartWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ChartWindow.setBounds(positionwidth,positionheight,windowwidth,windowheight);
+ChartWindow.setResizable(false);
+
+MyMath ourMath = new MyMath(MASSDEEP, RANDOMDEEP);
+MyMath Draw_Math = new MyMath(MASSDEEP,RANDOMDEEP);
+full_array = Draw_Math.getMathArray();
+draw_array = Draw_Math.getFragmentation();
+
+
+//MyPannel ChartPanel = new MyPannel();
+
+
+
+for (int i=0; i<=COUNTLINES; i++)
+	{
+		lines [i] =RANDOMDEEP - i * quantity;
+	}
+MyPannel ChartPanel = new MyPannel(5,5,windowwidth-5,windowheight-5, ourMath.getFragmentation(), ) ;
+ChartWindow.add(ChartPanel);
+ChartWindow.setBackground(Color.BLACK);
+
+ChartWindow.setVisible(true);
+
+	}
+
+}
