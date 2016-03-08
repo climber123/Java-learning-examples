@@ -1,0 +1,68 @@
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+public class MyPannel extends JPanel implements ActionListener, KeyListener {
+	
+	
+	Color random_color = new Color(0, 0, 0);
+	Timer random_timer = new Timer (200, this);
+	boolean istimeron = false;
+		
+	public MyPannel (int start_pos_x, int start_pos_y, int start_width, int start_height, int [] towers, int [] digits)
+	{
+		this.addKeyListener(this);
+		this.setFocusable(true);
+		setFocusable(true);
+		
+	
+	}
+	
+	//public void DrawChart (Graphics g)
+	public void paintComponent (Graphics g) //!!!!!!!!!!!!!
+	{
+		super.paintComponent(g);
+		g.setColor(Color.BLACK);
+		g.fillRect(100, 100, 5, 100);
+		//repaint();
+		for (int i = 0; i < 10; i++)
+		{
+			
+		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		int r = (int) (Math.random()*255);
+		int g = (int) (Math.random()*255);
+		int b = (int) (Math.random()*255);
+		random_color = new Color(r, g, b);
+		//repaint();
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+}
