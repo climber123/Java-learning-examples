@@ -13,27 +13,103 @@ public class MyPannel extends JPanel implements ActionListener, KeyListener {
 	Color random_color = new Color(0, 0, 0);
 	Timer random_timer = new Timer (200, this);
 	boolean istimeron = false;
+	int [] heretowers;
+	int [] heredigits;
+	int towercount;
+	int arraylenght;
+	int towerwidth;
+	int maxtowerheight;
+	int cur_panheight;
+	int cur_array_deep;
 		
-	public MyPannel (int start_pos_x, int start_pos_y, int start_width, int start_height, int [] towers, int [] digits)
+	public MyPannel (int panwidth, int panheight, int [] towers, int [] digits, int array_deep)
 	{
 		this.addKeyListener(this);
 		this.setFocusable(true);
 		setFocusable(true);
+		heretowers = towers;
+		heredigits = digits;
+		cur_array_deep = array_deep;
 		
-	
+		towercount = towers.length -1;
+		arraylenght = digits.length;
+		towerwidth = Math.round(panwidth / (2*towercount +1));
+		cur_panheight=panheight;
+		
 	}
 	
-	//public void DrawChart (Graphics g)
+	//Обрабатываем массив, и делаем из него массив количества точечек в каждом столбике
+	public int [] getprocessMath (int [] processArray, int processTowers, int maximumval) 
+	{
+		//int maxval = 0;
+		int dotquantity;
+		int cut1, cut2, delta;
+		int [] shti = new int [processTowers]; 
+				
+/*		for (int i = 0 ; i < processArray.length-1; i++)
+		{
+			if ( processArray[i+1]>processArray[i]) maxval = processArray[i];
+		
+		}
+		dotquantity = (int) Math.round( maxval / processTowers);
+*/		
+		dotquantity =(int) Math.round (maximumval/processTowers);
+		cut1=0;
+		cut2=dotquantity;
+		delta = cut2-cut1;
+		for (int k = 0; k< processTowers; k++)
+		{
+			for (int j = 0 ; j< processArray.length; j++)
+				{
+					if (processArray[j] < cut2 && processArray[j] >=cut1)
+						shti[k]++;
+					if (cut2 == processArray.length && processArray [j] == maximumval)
+					{
+						shti [k]++;
+					}
+				}
+			System.out.println(cut1 + " " + cut2 + " " + shti [k] + " "+ maximumval + " " + processTowers);
+		
+		cut1=cut2;
+		cut2=cut2+delta;
+		
+		
+		}
+		
+		return shti;
+	}
+	
+	//Рисуем столбики
 	public void paintComponent (Graphics g) //!!!!!!!!!!!!!
 	{
-		super.paintComponent(g);
+		//super.paintComponent(g);
 		g.setColor(Color.BLACK);
-		g.fillRect(100, 100, 5, 100);
-		//repaint();
-		for (int i = 0; i < 10; i++)
+		int [] draw_towers;
+		draw_towers = getprocessMath(heredigits, towercount,cur_array_deep);
+		
+		for (int i=0 ; i<towercount; i++)
 		{
+			int c_red = (int) (Math.random()*255);
+			int c_green = (int) (Math.random()*255);
+			int c_blue = (int) (Math.random()*255);
+			random_color = new Color(c_red, c_green, c_blue);
+			g.setColor(random_color);
 			
+			
+			System.out.println(towerwidth+2*i*towerwidth + " " + cur_panheight + " " + towerwidth + " " + draw_towers[i]);
+			g.fillRect(towerwidth+2*i*towerwidth, cur_panheight-draw_towers[i]-50, towerwidth, draw_towers[i]);
+			//g.fillRect(10+i, cur_panheight-draw_towers[i]-50, towerwidth, draw_towers[i]);
 		}
+		
+		
+		//g.fillRect(towerwidth, cur_panheight, towerwidth, draw_towers[0]);
+		//g.fillRect(towerwidth, 10, towerwidth, draw_towers[0]);
+		//g.fillRect(75,cur_panheight-90-50,25,89);
+		//repaint();
+		//for (int i = 0; i < 10; i++)
+		//{
+		//	g.setColor(Color.BLACK);
+		//}
 	}
 
 	@Override
@@ -66,3 +142,6 @@ public class MyPannel extends JPanel implements ActionListener, KeyListener {
 	
 
 }
+	
+
+
