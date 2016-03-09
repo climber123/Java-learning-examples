@@ -27,20 +27,17 @@ ChartWindow.setResizable(false);
 MyMath ourMath = new MyMath(MASSDEEP, RANDOMDEEP);
 MyMath Draw_Math = new MyMath(MASSDEEP,RANDOMDEEP);
 full_array = Draw_Math.getMathArray();
-draw_array = Draw_Math.getFragmentation();
-
-
-//MyPannel ChartPanel = new MyPannel();
-
+//draw_array = Draw_Math.getFragmentation();
 
 
 for (int i=0; i<=COUNTLINES; i++)
 	{
 		lines [i] =RANDOMDEEP - i * quantity;
+		
 	}
-MyPannel ChartPanel = new MyPannel(5,5,windowwidth-5,windowheight-5, ourMath.getFragmentation(), ) ;
+MyPannel ChartPanel = new MyPannel(windowwidth-10,windowheight-10, lines, ourMath.getFragmentation(), RANDOMDEEP);
 ChartWindow.add(ChartPanel);
-ChartWindow.setBackground(Color.BLACK);
+//ChartWindow.setBackground(Color.BLACK);
 
 ChartWindow.setVisible(true);
 
