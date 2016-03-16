@@ -1,0 +1,140 @@
+package exampleWindow;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+import javazoom.jl.player.Player;
+
+public class theWindow {
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	/*	createPanel();
+		showGUI();
+		
+		 javax.swing.SwingUtilities.invokeLater(new Runnable() { 
+	            public void run() 
+	            { 
+	                showGUI();
+	            }} );
+*/		
+		
+		createPanel();
+	}
+	
+	
+	static Thread t = new Thread(new AudioThread());
+	
+	
+	
+	private static void showGUI()
+	{
+
+	}
+	
+	public static void createPanel ()
+	{
+		
+		JFrame myFrame = new JFrame();
+        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        
+        
+ 
+        //Insets insets = frame.getInsets(); 
+        //myFrame.setSize(300 , 125); 
+        myFrame.setBounds(100,100,300,200);
+  		JPanel myPanel = new JPanel();
+		JButton myButton = new JButton();
+		JTextArea myTextArea = new JTextArea();
+		
+		 
+        JButton b1 = new JButton("start"); 
+        JButton b2 = new JButton("stop"); 
+
+        myPanel.add(b1); 
+        myPanel.add(b2);
+        myPanel.setLayout(null);
+        b1.setBounds(10, 10, 100, 100);
+        b2.setBounds(110,10,100,100);
+        b1.addActionListener(new ActionListener(){
+        	
+        				@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+        					//AudioThread att = new AudioThread();
+        					//att.run();
+        					//Thread t = new Thread(new AudioThread());
+        					t.start();
+			}
+        	
+        });
+        b2.addActionListener(new ActionListener(){
+        	
+			//@SuppressWarnings("deprecation")
+			@Override
+public void actionPerformed(ActionEvent arg0) {
+	// TODO Auto-generated method stub
+				 //AudioThread att = new AudioThread();
+				try
+				{
+				 t.stop();
+				}
+				catch (Exception fff)
+				{
+					System.out.println("123123");
+				}
+}
+
+});
+        
+        myFrame.add(myPanel); 
+        myFrame.setVisible(true);
+       
+       
+		
+        
+	}
+	//private class myButtonClick implements ActionListener{
+		
+	//}
+		//public void actionPerformed(ActionEvent event){//реакция на нажатие кнопки-смена цвета панели
+		//	AudioThread att = new AudioThread;
+		//	att.run();
+		//}
+	
+	
+	
+	
+}
+
+
+
+ class AudioThread implements Runnable {
+	 
+	public void run()
+	{
+		try{
+		Player p = new Player(new FileInputStream("D:\\123.mp3"));
+		p.play();
+	
+		}
+		catch (Exception e)
+		{
+			System.out.println("111");
+		}
+		
+		
+	}
+	public void stop(){
+	//	p.close();
+	}
+	
+	
+}
